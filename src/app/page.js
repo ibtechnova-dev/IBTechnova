@@ -29,7 +29,7 @@ export default function Home() {
           <div className="flex items-center gap-3 sm:gap-4 justify-center">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
               <Image
-                src="/sphere_logo.png"
+                src="/Logo.png"
                 alt="IBtech Nova Logo"
                 priority
                 fill

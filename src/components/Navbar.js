@@ -24,16 +24,23 @@ export default function Navbar() {
         <Link href="#top" className="flex items-center gap-2 group mr-2 sm:mr-4">
           <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
             <Image
-              src="/sphere_logo.png"
+              src="/Logo.png"
               alt="IBtech Nova Logo"
               priority
               fill
               className="object-contain"
             />
           </div>
-          <span className="font-bold text-lg hidden sm:block tracking-tight text-white leading-none">
-            <span className="text-gradient-pink">IB</span><span className="text-gradient-blue text-sm">tech</span>
-          </span>
+          <div className="hidden sm:flex flex-col justify-center">
+            <span className="font-bold text-lg tracking-tight text-white leading-none mb-0.5">
+              <span className="text-gradient-pink">IB</span><span className="text-gradient-blue text-sm">tech</span>
+            </span>
+            <div className="flex items-center gap-1 w-full pl-5">
+              <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-brand-cyan/60 rounded-full"></div>
+              <span className="text-brand-cyan font-bold tracking-[0.3em] text-[10px] uppercase whitespace-nowrap drop-shadow-[0_0_8px_rgba(14,165,233,0.6)]">nova</span>
+              <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-brand-cyan/60 rounded-full"></div>
+            </div>
+          </div>
         </Link>
 
         {/* Links */}
