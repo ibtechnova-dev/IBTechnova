@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-outfit), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  
+  --color-background: #0a0f1d;
+  --color-foreground: #f8fafc;
+  
+  --color-brand-blue: #1d3557;
+  --color-brand-cyan: #0ea5e9;
+  --color-brand-pink: #e11d74;
+  --color-brand-magenta: #ec4899;
+  
+  --color-card-bg: rgba(30, 41, 59, 0.4);
+  --color-card-border: rgba(236, 72, 153, 0.2);
+  
+  --backgroundImage-glow: radial-gradient(circle at center, rgba(225, 29, 116, 0.15) 0%, rgba(10, 15, 29, 0) 50%);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    overflow-x: hidden;
+  }
+}
+
+@utility glass-panel {
+  background: var(--color-card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-card-border);
+  box-shadow: 0 4px 40px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(236, 72, 153, 0.05);
+  transition: all 0.3s ease;
+}
+
+@utility glass-panel-hover {
+  border-color: rgba(236, 72, 153, 0.5);
+  box-shadow: 0 4px 40px rgba(225, 29, 116, 0.15), inset 0 0 20px rgba(236, 72, 153, 0.1);
+  transform: translateY(-2px);
+}
+
+@utility text-gradient {
+  background: linear-gradient(135deg, var(--color-brand-cyan), var(--color-brand-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility text-gradient-pink {
+  background: linear-gradient(135deg, #f472b6, var(--color-brand-pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility text-gradient-blue {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@utility neon-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
+}
