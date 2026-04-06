@@ -31,14 +31,14 @@ export default function Navbar() {
               className="object-contain"
             />
           </div>
-          <div className="hidden sm:flex flex-col justify-center">
-            <span className="font-bold text-lg tracking-tight text-white leading-none mb-0.5">
-              <span className="text-gradient-pink">IB</span><span className="text-gradient-blue text-sm">tech</span>
+          <div className="hidden sm:flex flex-col justify-center -translate-y-0.5">
+            <span className="text-xl font-black tracking-tighter leading-none mb-0.5">
+              <span className="text-gradient-pink">IB</span><span className="text-gradient-blue">tech</span>
             </span>
-            <div className="flex items-center gap-1 w-full pl-5">
-              <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-brand-cyan/60 rounded-full"></div>
-              <span className="text-brand-cyan font-bold tracking-[0.3em] text-[10px] uppercase whitespace-nowrap drop-shadow-[0_0_8px_rgba(14,165,233,0.6)]">nova</span>
-              <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-brand-cyan/60 rounded-full"></div>
+            <div className="flex items-center gap-1 w-full pl-3.5">
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-brand-cyan/60 rounded-full"></div>
+              <span className="text-brand-cyan font-bold tracking-[0.3em] text-[7.5px] uppercase whitespace-nowrap drop-shadow-[0_0_8px_rgba(14,165,233,0.6)]">nova</span>
+              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-brand-cyan/60 rounded-full"></div>
             </div>
           </div>
         </Link>
