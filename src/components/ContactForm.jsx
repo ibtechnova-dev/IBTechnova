@@ -1,41 +1,105 @@
 "use client";
 
 import { useState } from "react";
+import * as Yup from "yup";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
 
-const INPUT_BASE =
-  "w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-sm outline-none transition-all duration-300 focus:border-brand-cyan/60 focus:bg-brand-cyan/5 focus:shadow-[0_0_0_3px_rgba(14,165,233,0.12)] hover:border-white/20";
+// ---------------------------------------------------------------------------
+// Yup validation schema – all fields required
+// ---------------------------------------------------------------------------
+const schema = Yup.object({
+  name: Yup.string()
+    .trim()
+    // .min(2, "Name must be at least 2 characters.")
+    .required("Name is required."),
 
+  email: Yup.string()
+    .trim()
+    .email("Please enter a valid email address.")
+    .required("Email is required."),
+
+  phone: Yup.string()
+    .trim()
+    .matches(
+      /^[\+]?[\d\s\-\(\)]{7,15}$/,
+      "Please enter a valid phone number (e.g. +92 300 0000000)."
+    )
+    .required("Contact number is required."),
+
+  message: Yup.string()
+    .trim()
+    .min(10, "Message must be at least 10 characters.")
+    .required("Message is required."),
+});
+
+// ---------------------------------------------------------------------------
+// Shared input class
+// ---------------------------------------------------------------------------
+const inputCls = (hasError) =>
+  [
+    "w-full bg-white/5 border rounded-xl px-4 py-3 text-slate-100 placeholder-slate-500 text-sm outline-none transition-all duration-300",
+    "hover:border-white/20",
+    hasError
+      ? "border-brand-pink/60 focus:border-brand-pink focus:shadow-[0_0_0_3px_rgba(225,29,116,0.18)]"
+      : "border-white/10 focus:border-brand-cyan/60 focus:bg-brand-cyan/5 focus:shadow-[0_0_0_3px_rgba(14,165,233,0.12)]",
+  ].join(" ");
+
+// ---------------------------------------------------------------------------
+// Reusable error message
+// ---------------------------------------------------------------------------
+function FieldError({ msg }) {
+  return (
+    <AnimatePresence>
+      {msg && (
+        <motion.p
+          key={msg}
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -4 }}
+          transition={{ duration: 0.2 }}
+          className="flex items-center gap-1 text-xs font-medium text-brand-pink drop-shadow-[0_0_6px_rgba(225,29,116,0.7)]"
+        >
+          <AlertCircle className="w-3 h-3 flex-shrink-0" />
+          {msg}
+        </motion.p>
+      )}
+    </AnimatePresence>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Main component
+// ---------------------------------------------------------------------------
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const EMPTY = { name: "", email: "", phone: "", message: "" };
+  const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
 
-  const validate = () => {
-    const errs = {};
-    if (!form.name.trim()) errs.name = "Name is required.";
-    if (!form.email.trim()) {
-      errs.email = "Email is required.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      errs.email = "Please enter a valid email address.";
+  // Validate with Yup and return a flat errors object
+  const runValidation = async (data) => {
+    try {
+      await schema.validate(data, { abortEarly: false });
+      return {};
+    } catch (err) {
+      return err.inner.reduce((acc, e) => {
+        if (e.path && !acc[e.path]) acc[e.path] = e.message;
+        return acc;
+      }, {});
     }
-    if (!form.message.trim()) errs.message = "Message is required.";
-    else if (form.message.trim().length < 10)
-      errs.message = "Message must be at least 10 characters.";
-    return errs;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm((prev) => ({ ...prev, [name]: value }));
-    // Clear error on edit
+    // Clear the error for this field as the user types
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const errs = validate();
+    const errs = await runValidation(form);
     if (Object.keys(errs).length) {
       setErrors(errs);
       return;
@@ -43,9 +107,8 @@ export default function ContactForm() {
     setStatus("loading");
     try {
       // -----------------------------------------------------------------
-      // Replace the URL below with your Formspree endpoint, e.g.:
-      //   https://formspree.io/f/YOUR_FORM_ID
-      // Sign up free at https://formspree.io to get an endpoint.
+      // Replace YOUR_FORM_ID with your Formspree form ID.
+      // Sign up free at https://formspree.io
       // -----------------------------------------------------------------
       const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
         method: "POST",
@@ -53,12 +116,14 @@ export default function ContactForm() {
         body: JSON.stringify({
           name: form.name,
           email: form.email,
+          phone: form.phone,
           message: form.message,
         }),
       });
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", message: "" });
+        setForm(EMPTY);
+        setErrors({});
       } else {
         setStatus("error");
       }
@@ -76,11 +141,13 @@ export default function ContactForm() {
       className="w-full max-w-xl mx-auto"
     >
       <div className="relative group/card">
-        {/* Glow border */}
+        {/* Animated glow border */}
         <div className="absolute -inset-px rounded-2xl bg-gradient-to-br from-brand-pink/40 via-brand-cyan/20 to-brand-pink/10 opacity-60 blur-sm group-hover/card:opacity-100 transition duration-500 pointer-events-none" />
 
         <div className="relative glass-panel rounded-2xl p-8">
           <AnimatePresence mode="wait">
+
+            {/* ── Success state ── */}
             {status === "success" ? (
               <motion.div
                 key="success"
@@ -104,7 +171,9 @@ export default function ContactForm() {
                   Send another message
                 </button>
               </motion.div>
+
             ) : (
+              /* ── Form ── */
               <motion.form
                 key="form"
                 initial={{ opacity: 0 }}
@@ -114,6 +183,7 @@ export default function ContactForm() {
                 noValidate
                 className="flex flex-col gap-5 text-left"
               >
+
                 {/* Name */}
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="contact-name" className="text-xs font-semibold text-slate-400 tracking-widest uppercase">
@@ -127,13 +197,9 @@ export default function ContactForm() {
                     placeholder="Your full name"
                     value={form.name}
                     onChange={handleChange}
-                    className={`${INPUT_BASE} ${errors.name ? "border-brand-pink/60 focus:border-brand-pink/80 focus:shadow-[0_0_0_3px_rgba(225,29,116,0.12)]" : ""}`}
+                    className={inputCls(!!errors.name)}
                   />
-                  {errors.name && (
-                    <p className="text-brand-pink text-xs flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3" /> {errors.name}
-                    </p>
-                  )}
+                  <FieldError msg={errors.name} />
                 </div>
 
                 {/* Email */}
@@ -149,13 +215,27 @@ export default function ContactForm() {
                     placeholder="you@example.com"
                     value={form.email}
                     onChange={handleChange}
-                    className={`${INPUT_BASE} ${errors.email ? "border-brand-pink/60 focus:border-brand-pink/80 focus:shadow-[0_0_0_3px_rgba(225,29,116,0.12)]" : ""}`}
+                    className={inputCls(!!errors.email)}
                   />
-                  {errors.email && (
-                    <p className="text-brand-pink text-xs flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3" /> {errors.email}
-                    </p>
-                  )}
+                  <FieldError msg={errors.email} />
+                </div>
+
+                {/* Phone */}
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="contact-phone" className="text-xs font-semibold text-slate-400 tracking-widest uppercase">
+                    Contact Number
+                  </label>
+                  <input
+                    id="contact-phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="+92 300 0000000"
+                    value={form.phone}
+                    onChange={handleChange}
+                    className={inputCls(!!errors.phone)}
+                  />
+                  <FieldError msg={errors.phone} />
                 </div>
 
                 {/* Message */}
@@ -170,20 +250,16 @@ export default function ContactForm() {
                     placeholder="Tell us about your project or inquiry…"
                     value={form.message}
                     onChange={handleChange}
-                    className={`${INPUT_BASE} resize-none ${errors.message ? "border-brand-pink/60 focus:border-brand-pink/80 focus:shadow-[0_0_0_3px_rgba(225,29,116,0.12)]" : ""}`}
+                    className={`${inputCls(!!errors.message)} resize-none`}
                   />
-                  {errors.message && (
-                    <p className="text-brand-pink text-xs flex items-center gap-1">
-                      <AlertCircle className="w-3 h-3" /> {errors.message}
-                    </p>
-                  )}
+                  <FieldError msg={errors.message} />
                 </div>
 
-                {/* Server error */}
+                {/* Server error banner */}
                 {status === "error" && (
-                  <p className="text-brand-pink text-sm flex items-center gap-2 bg-brand-pink/10 border border-brand-pink/20 rounded-lg px-4 py-3">
+                  <p className="flex items-center gap-2 text-brand-pink text-sm bg-brand-pink/10 border border-brand-pink/20 rounded-lg px-4 py-3">
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
-                    Something went wrong. Please try again or email us directly.
+                    Something went wrong. Please try again or contact us directly.
                   </p>
                 )}
 
@@ -210,6 +286,7 @@ export default function ContactForm() {
                     )}
                   </span>
                 </button>
+
               </motion.form>
             )}
           </AnimatePresence>
