@@ -3,9 +3,7 @@
 import { motion } from "framer-motion";
 import { CheckCircle2, MessageSquareCode, Globe, Laptop, Database, Rocket, ChevronRight, PhoneCall, Mail } from "lucide-react";
 import Image from "next/image";
-import logoSrc from "@/assets/logo.png";
 import ContactForm from "@/components/ContactForm";
-import heroSrc from "@/assets/hero.png";
 
 export default function Home() {
   const services = [
@@ -32,7 +30,7 @@ export default function Home() {
           <div className="flex items-center gap-3 sm:gap-4 justify-center">
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0">
               <Image
-                src={logoSrc}
+                src="/logo.png"
                 alt="IBtech Nova Logo"
                 priority
                 fill
@@ -84,7 +82,7 @@ export default function Home() {
           className="w-full relative rounded-3xl overflow-hidden glass-panel border-brand-cyan/20 shadow-[0_0_60px_rgba(14,165,233,0.15)] aspect-[16/9] md:aspect-[21/9]"
         >
           <Image
-            src={heroSrc}
+            src="/hero.png"
             alt="Futuristic software engineering environment"
             fill
             sizes="(max-width: 768px) 100vw, 896px"

@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import logoSrc from "@/assets/logo.png";
 
 export default function Navbar() {
   const navLinks = [
@@ -25,7 +24,7 @@ export default function Navbar() {
         <Link href="#top" className="flex items-center gap-2 group mr-2 sm:mr-4">
           <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
             <Image
-              src={logoSrc}
+              src="/logo.png"
               alt="IBtech Nova Logo"
               priority
               fill
