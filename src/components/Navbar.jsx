@@ -29,6 +29,7 @@ export default function Navbar() {
               alt="IBtech Nova Logo"
               priority
               fill
+              sizes="40px"
               className="object-contain"
             />
           </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, MessageSquareCode, Globe, Laptop, Database, Rocket, ChevronRight, PhoneCall, Mail } from "lucide-react";
 import Image from "next/image";
 import logoSrc from "@/assets/logo.png";
+import ContactForm from "@/components/ContactForm";
 import heroSrc from "@/assets/hero.png";
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
                 alt="IBtech Nova Logo"
                 priority
                 fill
+                sizes="80px"
                 className="object-contain"
               />
             </div>
@@ -85,6 +87,7 @@ export default function Home() {
             src={heroSrc}
             alt="Futuristic software engineering environment"
             fill
+            sizes="(max-width: 768px) 100vw, 896px"
             className="object-cover opacity-90 transition-opacity hover:opacity-100 duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-background/80 via-transparent to-transparent pointer-events-none" />
@@ -148,6 +151,18 @@ export default function Home() {
           <p className="text-lg text-slate-400 mb-8">
             Contact us today and get your website started!
           </p>
+
+          {/* Contact Form */}
+          <div className="w-full mb-12">
+            <ContactForm />
+          </div>
+
+          {/* Divider */}
+          <div className="flex items-center gap-4 w-full max-w-md mx-auto mb-10">
+            <div className="h-px flex-1 bg-white/10" />
+            <span className="text-slate-500 text-xs uppercase tracking-widest">or reach us directly</span>
+            <div className="h-px flex-1 bg-white/10" />
+          </div>
 
           {/* Contact Buttons */}
           <div className="flex flex-col sm:flex-row gap-6 mb-16 items-center justify-center">
