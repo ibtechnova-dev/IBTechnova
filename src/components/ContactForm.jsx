@@ -27,10 +27,7 @@ const schema = Yup.object({
     )
     .required("Contact number is required."),
 
-  message: Yup.string()
-    .trim()
-    .min(10, "Message must be at least 10 characters.")
-    .required("Message is required."),
+  remarks: Yup.string().trim(),
 });
 
 // ---------------------------------------------------------------------------
@@ -72,7 +69,7 @@ function FieldError({ msg }) {
 // Main component
 // ---------------------------------------------------------------------------
 export default function ContactForm() {
-  const EMPTY = { name: "", email: "", phone: "", message: "" };
+  const EMPTY = { name: "", email: "", phone: "", remarks: "" };
   const [form, setForm] = useState(EMPTY);
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
@@ -105,22 +102,21 @@ export default function ContactForm() {
       return;
     }
     setStatus("loading");
+    // Google Apps Script requires multipart/form-data (no JSON header)
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbwsujCDQ1wJTfJqWvW87zE19JafVGd6O4oqwEiUIRdTN-OgIoyyn4-_2XXBckgmQhR1Eg/exec";
+
     try {
-      // -----------------------------------------------------------------
-      // Replace YOUR_FORM_ID with your Formspree form ID.
-      // Sign up free at https://formspree.io
-      // -----------------------------------------------------------------
-      const res = await fetch("https://formspree.io/f/YOUR_FORM_ID", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          message: form.message,
-        }),
-      });
-      if (res.ok) {
+      const fd = new FormData();
+      fd.append("name",    form.name);
+      fd.append("email",   form.email);
+      fd.append("phone",   form.phone);
+      fd.append("remarks", form.remarks);
+
+      const res = await fetch(SCRIPT_URL, { method: "POST", body: fd });
+      const text = await res.text();
+
+      if (text === "Success") {
         setStatus("success");
         setForm(EMPTY);
         setErrors({});
@@ -238,21 +234,21 @@ export default function ContactForm() {
                   <FieldError msg={errors.phone} />
                 </div>
 
-                {/* Message */}
+                {/* Remarks */}
                 <div className="flex flex-col gap-1.5">
-                  <label htmlFor="contact-message" className="text-xs font-semibold text-slate-400 tracking-widest uppercase">
-                    Message
+                  <label htmlFor="contact-remarks" className="text-xs font-semibold text-slate-400 tracking-widest uppercase">
+                    Remarks
                   </label>
                   <textarea
-                    id="contact-message"
-                    name="message"
+                    id="contact-remarks"
+                    name="remarks"
                     rows={5}
                     placeholder="Tell us about your project or inquiry…"
-                    value={form.message}
+                    value={form.remarks}
                     onChange={handleChange}
-                    className={`${inputCls(!!errors.message)} resize-none`}
+                    className={`${inputCls(!!errors.remarks)} resize-none`}
                   />
-                  <FieldError msg={errors.message} />
+                  <FieldError msg={errors.remarks} />
                 </div>
 
                 {/* Server error banner */}
