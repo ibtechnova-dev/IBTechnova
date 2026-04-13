@@ -67,3 +67,15 @@
     linear-gradient(to right, rgba(14, 165, 233, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(14, 165, 233, 0.05) 1px, transparent 1px);
 }
+
+@keyframes footer-bg {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@utility footer-animated-bg {
+  background: linear-gradient(-45deg, #0a101f, #1e111a, #0b1a1a, #0a101f);
+  background-size: 400% 400%;
+  animation: footer-bg 15s ease infinite;
+}

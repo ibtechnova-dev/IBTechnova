@@ -1,5 +1,6 @@
 import { Outfit } from "next/font/google";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -22,7 +23,10 @@ export default function RootLayout({ children }) {
     >
       <body suppressHydrationWarning className="min-h-full flex flex-col font-sans bg-[#0a0f1d] text-slate-100 selection:bg-pink-500 selection:text-white">
         <Navbar />
-        {children}
+        <div className="flex-grow">
+          {children}
+        </div>
+        <Footer />
       </body>
     </html>
   );
