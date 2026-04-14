@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronRight, Globe, MessageSquareCode, Rocket } from "lucide-react";
+import { ChevronRight, Globe, Lightbulb, MessageSquareCode, Rocket, ShieldCheck, Users, Zap } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ContactForm from "../components/ContactForm";
@@ -134,6 +134,76 @@ export default function Home() {
             <p className="text-slate-400 text-sm mb-4">Ready to build your next project with us?</p>
             <Link href="/contact" className="text-brand-pink text-xs font-bold uppercase tracking-widest hover:underline underline-offset-4">Contact Now &rarr;</Link>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="w-full max-w-6xl mx-auto px-6 py-24 relative z-10">
+        <div className="flex flex-col items-center text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">The IB Technova Difference</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">Why Choose Us</h2>
+            <p className="text-slate-400 max-w-2xl mx-auto">
+              We combine technical excellence with strategic thinking to deliver solutions that actually drive business growth.
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            {
+              title: "Expert Team",
+              description: "Seasoned professionals dedicated to delivering top-tier digital experiences.",
+              icon: <Users className="w-6 h-6 text-brand-pink" />,
+              hoverBorder: "hover:border-brand-pink/30",
+              bgShape: "bg-brand-pink/5",
+              iconBg: "bg-brand-pink/10"
+            },
+            {
+              title: "Innovation First",
+              description: "Leveraging the latest technologies to build scalable and future-proof solutions.",
+              icon: <Lightbulb className="w-6 h-6 text-brand-cyan" />,
+              hoverBorder: "hover:border-brand-cyan/30",
+              bgShape: "bg-brand-cyan/5",
+              iconBg: "bg-brand-cyan/10"
+            },
+            {
+              title: "Lightning Fast",
+              description: "Optimized performance ensuring your platforms load instantly and run smoothly.",
+              icon: <Zap className="w-6 h-6 text-brand-pink" />,
+              hoverBorder: "hover:border-brand-pink/30",
+              bgShape: "bg-brand-pink/5",
+              iconBg: "bg-brand-pink/10"
+            },
+            {
+              title: "Secure & Reliable",
+              description: "Enterprise-grade security and robust infrastructure you can trust.",
+              icon: <ShieldCheck className="w-6 h-6 text-brand-cyan" />,
+              hoverBorder: "hover:border-brand-cyan/30",
+              bgShape: "bg-brand-cyan/5",
+              iconBg: "bg-brand-cyan/10"
+            }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className={`glass-panel p-6 rounded-2xl border-white/5 ${item.hoverBorder} transition-all duration-300 relative overflow-hidden group`}
+            >
+              <div className={`absolute top-0 right-0 w-32 h-32 ${item.bgShape} rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500`} />
+              <div className={`w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center mb-6`}>
+                {item.icon}
+              </div>
+              <h3 className="text-xl font-bold text-slate-100 mb-3">{item.title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
+            </motion.div>
+          ))}
         </div>
       </section>
 
