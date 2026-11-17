@@ -1,204 +1,173 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ChevronRight, Globe, Lightbulb, MessageSquareCode, Rocket, ShieldCheck, Users, Zap } from "lucide-react";
+import { ChevronRight, Lightbulb, ShieldCheck, Users, Zap, PlayCircle, ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import ContactForm from "../components/ContactForm";
+import ServiceIcon from "../components/ServiceIcon";
+import { services, BOOK_CALL_URL } from "../data/services";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-60px" },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] },
+};
+
+const STATS = [
+  { value: "$52.5M+", label: "in construction estimates" },
+  { value: "4,300+", label: "line items priced" },
+  { value: "Bots live", label: "with multiple clients" },
+  { value: "PK · UAE · KSA · UK · US", label: "clients served" },
+];
+
+const TOOLS = ["PlanSwift", "Bluebeam", "Excel", "VICIdial", "Asterisk", "Node.js", "Angular", "React", "MongoDB", "AWS"];
 
 export default function Home() {
   return (
     <main id="top" className="min-h-screen relative overflow-hidden flex flex-col items-center neon-grid pt-24">
-      {/* Hero Section */}
-      <section className="w-full max-w-4xl mx-auto px-6 pt-16 pb-12 flex flex-col items-center text-center relative z-10">
+      {/* Hero */}
+      <section className="w-full max-w-5xl mx-auto px-6 pt-14 md:pt-20 pb-10 flex flex-col items-center text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 80 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-12"
         >
-          <span className="px-4 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-sm font-medium tracking-wide uppercase mb-6 inline-block">
-            Welcome to
+          <span className="px-4 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/10 text-brand-cyan text-xs sm:text-sm font-medium tracking-wide uppercase mb-6 inline-block">
+            <span className="text-gradient-pink font-bold">IB</span>
+            <span className="font-bold">tech Nova</span> · Software, AI &amp; Estimating
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            <span className="text-gradient-pink">IB</span>
-            <span className="text-gradient-blue">tech</span>
-            <span className="mx-2"></span>
-            <span className="text-gradient-blue">Nova</span>
+          <h1 className="text-[2.1rem] leading-[1.15] sm:text-5xl md:text-6xl font-bold mb-6 md:leading-[1.1] tracking-tight">
+            <span className="text-gradient-pink">AI Calling Bots</span>, <span className="text-gradient-blue">Custom CRMs</span> &amp;{" "}
+            <span className="text-white">US Construction Estimates</span>
+            <span className="block text-slate-300 text-xl sm:text-2xl md:text-3xl font-semibold mt-4">
+              built and run by one team.
+            </span>
           </h1>
-          <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            We help businesses grow online with modern and professional <span className="text-brand-cyan font-semibold">digital solutions</span>.
+          <p className="text-base md:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            From voice bots and dialers to HRMS, QA portals and same-day construction takeoffs, we build systems that run real businesses.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-4 mt-10">
-            <Link href="/services" className="group relative px-8 py-3.5 rounded-full font-bold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(225,29,116,0.3)]">
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-10">
+            <Link
+              href="/construction-estimating"
+              className="group relative px-8 py-3.5 rounded-full font-bold text-white overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(225,29,116,0.3)]"
+            >
               <div className="absolute inset-0 bg-gradient-to-r from-brand-pink to-brand-cyan" />
-              <div className="relative flex items-center gap-2">
-                Get Started <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <div className="relative flex items-center justify-center gap-2">
+                Get a Same-Day Estimate <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </div>
             </Link>
-            <Link href="/contact" className="px-8 py-3.5 rounded-full font-bold text-slate-300 border border-white/10 hover:bg-white/5 transition-all duration-300">
-              Contact Us
-            </Link>
+            <a
+              href={BOOK_CALL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3.5 rounded-full font-bold text-slate-200 border border-white/15 hover:bg-white/5 transition-all duration-300"
+            >
+              Book a 15-min Call
+            </a>
           </div>
         </motion.div>
+      </section>
 
-        {/* Hero Illustration */}
+      {/* Stats strip */}
+      <section className="w-full max-w-6xl mx-auto px-6 pb-16 relative z-10" aria-label="Key numbers">
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 40 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="w-full relative rounded-3xl overflow-hidden glass-panel border-brand-cyan/20 shadow-[0_0_60px_rgba(14,165,233,0.15)] aspect-[16/9] md:aspect-[21/9]"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          className="glass-panel rounded-3xl border-white/5 grid grid-cols-2 lg:grid-cols-4 divide-x divide-y lg:divide-y-0 divide-white/5 overflow-hidden"
         >
-          <Image
-            src="/hero.png"
-            alt="Futuristic software engineering environment"
-            fill
-            sizes="(max-width: 768px) 100vw, 896px"
-            className="object-cover opacity-90 transition-opacity hover:opacity-100 duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-background/80 via-transparent to-transparent pointer-events-none" />
+          {STATS.map((s) => (
+            <div key={s.label} className="p-6 md:p-8 text-center">
+              <div className="text-xl sm:text-2xl md:text-3xl font-bold text-gradient-pink leading-tight">{s.value}</div>
+              <div className="text-slate-400 text-xs sm:text-sm mt-2">{s.label}</div>
+            </div>
+          ))}
         </motion.div>
       </section>
 
-      {/* Feature Teasers */}
-      <section className="w-full max-w-6xl mx-auto px-6 py-24 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass-panel p-8 rounded-2xl border-white/5 hover:border-brand-pink/20 transition-all group overflow-hidden"
-          >
-            <div className="relative w-full h-32 mb-6 rounded-xl overflow-hidden border border-white/5">
-              <Image 
-                src="/assets/services_visual.png" 
-                alt="Web Solutions" 
-                fill 
-                className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-              />
-              <div className="absolute inset-0 bg-brand-pink/10 group-hover:bg-transparent transition-all" />
-            </div>
-            <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink mb-6">
-              <Globe className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-100 mb-2">Web Solutions</h3>
-            <p className="text-slate-400 text-sm mb-4">Professional websites and high-converting landing pages.</p>
-            <Link href="/services" className="text-brand-pink text-xs font-bold uppercase tracking-widest hover:underline underline-offset-4">Learn More &rarr;</Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="glass-panel p-8 rounded-2xl border-white/5 hover:border-brand-cyan/20 transition-all group overflow-hidden"
-          >
-            <div className="relative w-full h-32 mb-6 rounded-xl overflow-hidden border border-white/5">
-              <Image 
-                src="/assets/story_visual.png" 
-                alt="Success stories" 
-                fill 
-                className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-              />
-              <div className="absolute inset-0 bg-brand-cyan/10 group-hover:bg-transparent transition-all" />
-            </div>
-            <div className="w-12 h-12 rounded-full bg-brand-cyan/10 flex items-center justify-center text-brand-cyan mb-6">
-              <Rocket className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-100 mb-2">Success Stories</h3>
-            <p className="text-slate-400 text-sm mb-4">See how we&apos;ve helped other businesses succeed.</p>
-            <Link href="/story" className="text-brand-cyan text-xs font-bold uppercase tracking-widest hover:underline underline-offset-4">Read Stories &rarr;</Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="glass-panel p-8 rounded-2xl border-white/5 hover:border-brand-pink/20 transition-all group overflow-hidden"
-          >
-            <div className="relative w-full h-32 mb-6 rounded-xl overflow-hidden border border-white/5">
-              <Image 
-                src="/assets/contact_visual.png" 
-                alt="Get Started" 
-                fill 
-                className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500"
-              />
-              <div className="absolute inset-0 bg-brand-pink/10 group-hover:bg-transparent transition-all" />
-            </div>
-            <div className="w-12 h-12 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink mb-6">
-              <MessageSquareCode className="w-6 h-6" />
-            </div>
-            <h3 className="text-xl font-bold text-slate-100 mb-2">Get Started</h3>
-            <p className="text-slate-400 text-sm mb-4">Ready to build your next project with us?</p>
-            <Link href="/contact" className="text-brand-pink text-xs font-bold uppercase tracking-widest hover:underline underline-offset-4">Contact Now &rarr;</Link>
-          </motion.div>
+      {/* Services grid */}
+      <section className="w-full max-w-6xl mx-auto px-6 py-16 relative z-10">
+        <motion.div {...fadeUp} className="text-center mb-14">
+          <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">What we do</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-5">Six services. One team.</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">Pick what you need today. We can take on the rest when you&apos;re ready.</p>
+        </motion.div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((s, i) => {
+            const pink = s.accent === "pink";
+            return (
+              <motion.div key={s.slug} {...fadeUp} transition={{ ...fadeUp.transition, delay: (i % 3) * 0.08 }}>
+                <Link
+                  href={`/${s.slug}`}
+                  className={`group h-full flex flex-col glass-panel p-7 rounded-2xl border-white/5 transition-all duration-300 hover:-translate-y-1 ${pink ? "hover:border-brand-pink/30" : "hover:border-brand-cyan/30"}`}
+                >
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${pink ? "bg-brand-pink/10 text-brand-pink" : "bg-brand-cyan/10 text-brand-cyan"}`}>
+                    <ServiceIcon name={s.icon} className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-lg font-bold text-slate-100 mb-2">{s.short}</h3>
+                  <p className="text-slate-400 text-sm leading-relaxed mb-6">{s.teaser}</p>
+                  <span className={`mt-auto inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest ${pink ? "text-brand-pink" : "text-brand-cyan"}`}>
+                    Learn more <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </Link>
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="w-full max-w-6xl mx-auto px-6 py-24 relative z-10">
-        <div className="flex flex-col items-center text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">The IB Technova Difference</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">Why Choose Us</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              We combine technical excellence with strategic thinking to deliver solutions that actually drive business growth.
+      {/* Estimating spotlight */}
+      <section className="w-full max-w-6xl mx-auto px-6 py-16 relative z-10">
+        <motion.div {...fadeUp} className="glass-panel rounded-3xl border-brand-pink/20 overflow-hidden grid grid-cols-1 md:grid-cols-[1.2fr_1fr] items-center">
+          <div className="p-8 md:p-12">
+            <span className="text-brand-pink text-xs font-bold uppercase tracking-[0.3em]">For US contractors</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mt-4 mb-4 leading-tight">Every bid you skip is a job someone else wins.</h2>
+            <p className="text-slate-400 leading-relaxed mb-6">
+              Send us one set of plans. Get a takeoff and an Excel estimate broken down by CSI division, priced with your own rates, quoted the same day.
             </p>
-          </motion.div>
-        </div>
+            <ul className="text-slate-300 text-sm space-y-2 mb-8">
+              <li>• $24.56M municipal aquatic center, NJ: 9 bid packages</li>
+              <li>• 116,011 SF assisted care community, CA</li>
+              <li>• Custom homes in NY &amp; Hawaii, priced down to the rebar</li>
+            </ul>
+            <Link href="/construction-estimating" className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-gradient-to-r from-brand-pink to-brand-cyan hover:scale-105 transition-transform">
+              <PlayCircle className="w-4 h-4" /> Watch &amp; get a quote
+            </Link>
+          </div>
+          <Link href="/construction-estimating" className="relative block h-full min-h-[280px] md:min-h-[420px] bg-black/30" aria-label="See construction estimating samples">
+            <Image src="/videos/estimating-thumb.jpg" alt="Sample estimate numbers: $52.5M+ estimated, 4,360+ line items, 4 states" fill sizes="(max-width: 768px) 100vw, 45vw" className="object-cover object-top opacity-90" />
+          </Link>
+        </motion.div>
+      </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {/* Why Choose Us (kept) */}
+      <section className="w-full max-w-6xl mx-auto px-6 py-16 relative z-10">
+        <motion.div {...fadeUp} className="text-center mb-14">
+          <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">The IB Technova Difference</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-5">Why Choose Us</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            We combine technical excellence with strategic thinking to deliver solutions that actually drive business growth.
+          </p>
+        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            {
-              title: "Expert Team",
-              description: "Seasoned professionals dedicated to delivering top-tier digital experiences.",
-              icon: <Users className="w-6 h-6 text-brand-pink" />,
-              hoverBorder: "hover:border-brand-pink/30",
-              bgShape: "bg-brand-pink/5",
-              iconBg: "bg-brand-pink/10"
-            },
-            {
-              title: "Innovation First",
-              description: "Leveraging the latest technologies to build scalable and future-proof solutions.",
-              icon: <Lightbulb className="w-6 h-6 text-brand-cyan" />,
-              hoverBorder: "hover:border-brand-cyan/30",
-              bgShape: "bg-brand-cyan/5",
-              iconBg: "bg-brand-cyan/10"
-            },
-            {
-              title: "Lightning Fast",
-              description: "Optimized performance ensuring your platforms load instantly and run smoothly.",
-              icon: <Zap className="w-6 h-6 text-brand-pink" />,
-              hoverBorder: "hover:border-brand-pink/30",
-              bgShape: "bg-brand-pink/5",
-              iconBg: "bg-brand-pink/10"
-            },
-            {
-              title: "Secure & Reliable",
-              description: "Enterprise-grade security and robust infrastructure you can trust.",
-              icon: <ShieldCheck className="w-6 h-6 text-brand-cyan" />,
-              hoverBorder: "hover:border-brand-cyan/30",
-              bgShape: "bg-brand-cyan/5",
-              iconBg: "bg-brand-cyan/10"
-            }
+            { title: "Expert Team", description: "Seasoned professionals dedicated to delivering top-tier digital experiences.", Icon: Users, pink: true },
+            { title: "Innovation First", description: "Leveraging the latest technologies to build scalable and future-proof solutions.", Icon: Lightbulb },
+            { title: "Lightning Fast", description: "Optimized performance ensuring your platforms load instantly and run smoothly.", Icon: Zap, pink: true },
+            { title: "Secure & Reliable", description: "Enterprise-grade security and robust infrastructure you can trust.", Icon: ShieldCheck },
           ].map((item, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className={`glass-panel p-6 rounded-2xl border-white/5 ${item.hoverBorder} transition-all duration-300 relative overflow-hidden group`}
+              key={item.title}
+              {...fadeUp}
+              transition={{ ...fadeUp.transition, delay: index * 0.08 }}
+              className={`glass-panel p-6 rounded-2xl border-white/5 ${item.pink ? "hover:border-brand-pink/30" : "hover:border-brand-cyan/30"} transition-all duration-300 relative overflow-hidden group`}
             >
-              <div className={`absolute top-0 right-0 w-32 h-32 ${item.bgShape} rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500`} />
-              <div className={`w-12 h-12 rounded-xl ${item.iconBg} flex items-center justify-center mb-6`}>
-                {item.icon}
+              <div className={`absolute top-0 right-0 w-32 h-32 ${item.pink ? "bg-brand-pink/5" : "bg-brand-cyan/5"} rounded-bl-full -z-10 group-hover:scale-110 transition-transform duration-500`} />
+              <div className={`w-12 h-12 rounded-xl ${item.pink ? "bg-brand-pink/10" : "bg-brand-cyan/10"} flex items-center justify-center mb-6`}>
+                <item.Icon className={`w-6 h-6 ${item.pink ? "text-brand-pink" : "text-brand-cyan"}`} />
               </div>
               <h3 className="text-xl font-bold text-slate-100 mb-3">{item.title}</h3>
               <p className="text-slate-400 text-sm leading-relaxed">{item.description}</p>
@@ -207,26 +176,57 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="w-full max-w-4xl mx-auto px-6 py-24 relative z-10">
-        <div className="flex flex-col items-center text-center mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-4"
-          >
-            <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">Ready to scale?</span>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mt-4 mb-6">Let&apos;s Build the Future Together</h2>
-            <p className="text-slate-400 max-w-2xl mx-auto">
-              Whether you have a specific project in mind or just want to explore the possibilities, our team is ready to help you navigate the digital landscape.
-            </p>
-          </motion.div>
-        </div>
-
-        <ContactForm />
+      {/* Tools */}
+      <section className="w-full max-w-6xl mx-auto px-6 py-12 relative z-10" aria-label="Tools we work with">
+        <motion.div {...fadeUp} className="text-center">
+          <span className="text-slate-500 text-xs font-bold uppercase tracking-[0.3em]">Tools we work with</span>
+          <div className="flex flex-wrap justify-center gap-3 mt-6">
+            {TOOLS.map((t) => (
+              <span key={t} className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-slate-300 text-sm font-medium">
+                {t}
+              </span>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
+      {/* Founder */}
+      <section className="w-full max-w-4xl mx-auto px-6 py-16 relative z-10">
+        <motion.div {...fadeUp} className="glass-panel rounded-3xl border-white/5 p-8 md:p-10 flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
+          {/* TODO(Bilal): replace the initials with your photo: put it at /public/team/bilal.jpg and swap this div for <Image src="/team/bilal.jpg" .../> */}
+          <div className="w-28 h-28 flex-shrink-0 rounded-full bg-gradient-to-br from-brand-pink to-brand-cyan p-[3px]">
+            <div className="w-full h-full rounded-full bg-[#0a0f1d] flex items-center justify-center text-3xl font-bold text-white">BA</div>
+          </div>
+          <div>
+            <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">Meet the founder</span>
+            <h2 className="text-2xl md:text-3xl font-bold text-white mt-2">Bilal Ahmad</h2>
+            <p className="text-slate-400 text-sm mb-3">Founder, IBtech Nova</p>
+            <p className="text-slate-300 leading-relaxed mb-4">
+              I lead every IBtech Nova project, from dialers and AI bots to CRMs, websites and construction estimates, and I&apos;m the person you talk to from first call to delivery.
+            </p>
+            <a
+              href="https://www.linkedin.com/in/bilal-ahmad-605a0025a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-brand-cyan text-sm font-bold hover:underline underline-offset-4"
+            >
+              Connect on LinkedIn <ArrowRight className="w-4 h-4" />
+            </a>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Contact */}
+      <section className="w-full max-w-4xl mx-auto px-6 py-20 relative z-10">
+        <motion.div {...fadeUp} className="text-center mb-12">
+          <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">Ready to scale?</span>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-4 mb-5">Let&apos;s Build the Future Together</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Tell us what you need and we&apos;ll get back to you quickly.
+          </p>
+        </motion.div>
+        <ContactForm />
+      </section>
     </main>
   );
 }

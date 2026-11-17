@@ -1,6 +1,9 @@
 import { Outfit } from "next/font/google";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import WhatsAppButton from "../components/WhatsAppButton";
+import Analytics from "../components/Analytics";
+import JsonLd from "../components/JsonLd";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -38,6 +41,23 @@ export const metadata = {
   },
 };
 
+const organizationLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "IBtech Nova",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  email: "ibtechnova@gmail.com",
+  telephone: "+92 329 5985714",
+  address: { "@type": "PostalAddress", addressLocality: "Islamabad", addressCountry: "PK" },
+  sameAs: [
+    "https://www.linkedin.com/company/145315078/",
+    "https://www.linkedin.com/in/ibtech-nova-04b27a401/",
+    "https://www.instagram.com/ibtechnova/",
+    "https://x.com/IbTechnova51426",
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -52,6 +72,9 @@ export default function RootLayout({ children }) {
           {children}
         </div>
         <Footer />
+        <WhatsAppButton />
+        <Analytics />
+        <JsonLd data={organizationLd} />
       </body>
     </html>
   );

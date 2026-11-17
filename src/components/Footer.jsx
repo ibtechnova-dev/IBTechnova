@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail } from "lucide-react";
+import { services } from "@/data/services";
 
 const InstagramIcon = (props) => (
   <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -109,10 +110,9 @@ export default function Footer() {
         <div>
           <h3 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Services</h3>
           <ul className="space-y-4">
-            <li><Link href="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Web Solutions</Link></li>
-            <li><Link href="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Custom Software</Link></li>
-            <li><Link href="/services" className="text-slate-400 hover:text-white text-sm transition-colors">AI Automation</Link></li>
-            <li><Link href="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Cloud Services</Link></li>
+            {services.map((sv) => (
+              <li key={sv.slug}><Link href={`/${sv.slug}`} className="text-slate-400 hover:text-white text-sm transition-colors">{sv.short}</Link></li>
+            ))}
           </ul>
         </div>
 

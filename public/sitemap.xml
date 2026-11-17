@@ -6,19 +6,49 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.ibtechnova.com/services</loc>
+    <loc>https://www.ibtechnova.com/construction-estimating</loc>
     <lastmod>2026-11-17</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.ibtechnova.com/story</loc>
+    <loc>https://www.ibtechnova.com/ai-calling-bots</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ibtechnova.com/crm-hrms-qa</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ibtechnova.com/ai-automation</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ibtechnova.com/websites</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ibtechnova.com/cloud-cctv</loc>
     <lastmod>2026-11-17</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.ibtechnova.com/contact</loc>
+    <loc>https://www.ibtechnova.com/services</loc>
     <lastmod>2026-11-17</lastmod>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.ibtechnova.com/story</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.ibtechnova.com/contact</loc>
+    <lastmod>2026-11-17</lastmod>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.ibtechnova.com/privacy-policy</loc>

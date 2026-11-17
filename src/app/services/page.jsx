@@ -15,6 +15,8 @@ import {
   ExternalLink
 } from "lucide-react";
 import Link from "next/link";
+import ServiceIcon from "@/components/ServiceIcon";
+import { services as coreServices } from "@/data/services";
 import Image from "next/image";
 
 const LinkedinIcon = (props) => (
@@ -116,6 +118,33 @@ export default function ServicesPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-brand-background/80 via-transparent to-transparent pointer-events-none" />
         </motion.div>
 
+        {/* Core services (each has its own page) */}
+        <div className="text-center mb-10">
+          <span className="text-brand-pink text-xs font-bold uppercase tracking-[0.3em]">Core services</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mt-3">What clients hire us for most</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-24">
+          {coreServices.map((cs) => (
+            <Link
+              key={cs.slug}
+              href={`/${cs.slug}`}
+              className={`group glass-panel p-7 rounded-2xl border-white/5 transition-all duration-300 hover:-translate-y-1 ${cs.accent === "pink" ? "hover:border-brand-pink/30" : "hover:border-brand-cyan/30"}`}
+            >
+              <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${cs.accent === "pink" ? "bg-brand-pink/10 text-brand-pink" : "bg-brand-cyan/10 text-brand-cyan"}`}>
+                <ServiceIcon name={cs.icon} className="w-6 h-6" />
+              </div>
+              <h3 className="text-lg font-bold text-slate-100 mb-2">{cs.short}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed mb-4">{cs.teaser}</p>
+              <span className={`text-xs font-bold uppercase tracking-widest ${cs.accent === "pink" ? "text-brand-pink" : "text-brand-cyan"}`}>View service &rarr;</span>
+            </Link>
+          ))}
+        </div>
+
+        <div className="text-center mb-10">
+          <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">Also available</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mt-3">More ways we help</h2>
+        </div>
+
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
           {services.map((service, idx) => {
@@ -194,7 +223,7 @@ export default function ServicesPage() {
                 <span className="text-slate-300 font-medium text-sm group-hover:text-white transition-colors">+92 329 5985714</span>
               </a>
 
-              <a href="https://www.linkedin.com/company/ibtechnova" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
+              <a href="https://www.linkedin.com/company/145315078/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
                 <div className="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-500">
                   <LinkedinIcon className="w-5 h-5" />
                 </div>

@@ -13,6 +13,7 @@ export default function Navbar() {
     { name: "Home", href: "/" },
     { name: "Our Story", href: "/story" },
     { name: "Services", href: "/services" },
+    { name: "Estimating", href: "/construction-estimating" },
     { name: "Contact", href: "/contact" },
   ];
 
@@ -97,6 +98,8 @@ export default function Navbar() {
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
             className="md:hidden w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white transition-all ml-2 md:ml-0"
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
