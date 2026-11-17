@@ -1,34 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Quote, Target, Eye, ShieldCheck, Heart } from "lucide-react";
+import { Target, Eye, ShieldCheck, Heart } from "lucide-react";
 import Image from "next/image";
 
 export default function StoryPage() {
-  const testimonials = [
-    {
-      name: "Ahmed Khan",
-      role: "CEO at RetailHub",
-      message: "IB Technova transformed our online presence. The custom software they built is seamless and has significantly improved our workflow.",
-      initials: "AK",
-      color: "from-brand-pink to-brand-cyan"
-    },
-    {
-      name: "Sarah Jenkins",
-      role: "Marketing Director at HealthFirst",
-      message: "The landing pages created by IB Technova are high-converting and look stunning. Their attention to detail is unmatched.",
-      initials: "SJ",
-      color: "from-brand-cyan to-brand-pink"
-    },
-    {
-      name: "Michael Chen",
-      role: "Founder of TechFlow",
-      message: "Robust backend development and reliable hosting. IB Technova is our go-to partner for all things digital. Highly recommended!",
-      initials: "MC",
-      color: "from-brand-pink to-brand-cyan"
-    },
-  ];
-
   const values = [
     { name: "Innovation", icon: Target, desc: "Pushing the boundaries of what's possible in the digital space." },
     { name: "Quality", icon: ShieldCheck, desc: "Delivering excellence through rigorous testing and clean code." },
@@ -130,64 +106,6 @@ export default function StoryPage() {
         </div>
       </section>
 
-      {/* Testimonials Section (Integrated) */}
-      <section className="w-full max-w-6xl mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-16"
-        >
-          <div className="w-16 h-1 w-full flex items-center justify-center gap-2 mb-8">
-            <div className="h-px flex-1 bg-gradient-to-r from-transparent to-brand-cyan/30" />
-            <Quote className="w-8 h-8 text-brand-cyan/40" />
-            <div className="h-px flex-1 bg-gradient-to-l from-transparent to-brand-cyan/30" />
-          </div>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-wider text-gradient-blue uppercase mb-6">
-            Trusted by Leaders
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg leading-relaxed">
-            Our work speaks for itself, but here&apos;s what our clients have to say about their experience with IB Technova.
-          </p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((t, idx) => (
-            <motion.div
-              key={t.name}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              className="relative group"
-            >
-              <div className="absolute -inset-0.5 bg-gradient-to-br from-brand-pink/30 to-brand-cyan/30 rounded-2xl blur-sm opacity-50 group-hover:opacity-100 transition duration-500" />
-              <div className="relative h-full flex flex-col p-8 glass-panel rounded-2xl border-white/5 hover:border-white/20 transition-all duration-300">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className={`w-12 h-12 rounded-full bg-gradient-to-br ${t.color} flex items-center justify-center text-white font-bold text-sm shadow-inner`}>
-                    {t.initials}
-                  </div>
-                  <div>
-                    <h3 className="text-slate-100 font-bold tracking-wide">{t.name}</h3>
-                    <p className="text-slate-400 text-xs font-medium">{t.role}</p>
-                  </div>
-                </div>
-
-                <p className="text-slate-300 italic leading-relaxed text-sm">
-                  &quot;{t.message}&quot;
-                </p>
-                
-                <div className="mt-auto pt-6 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <div key={i} className="w-3 h-3 rounded-full bg-brand-cyan/30 blur-[1px]" />
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </section>
     </main>
   );
 }

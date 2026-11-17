@@ -8,9 +8,34 @@ const outfit = Outfit({
   subsets: ["latin"],
 });
 
+const SITE_URL = "https://www.ibtechnova.com";
+
 export const metadata = {
-  title: "IB Technova - Software and Web Services",
-  description: "We help businesses grow online with modern and professional digital solutions. Business web, landing pages, and custom software.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "IBtech Nova | AI Calling Bots, Custom CRMs & US Construction Estimates",
+    template: "%s | IBtech Nova",
+  },
+  description:
+    "IBtech Nova builds AI calling bots and dialers, custom CRM/HRMS and QA portals, websites, and delivers same-day US construction estimates and quantity takeoffs.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: "IBtech Nova",
+    url: SITE_URL,
+    title: "IBtech Nova | AI Calling Bots, Custom CRMs & US Construction Estimates",
+    description:
+      "AI calling bots, custom CRMs and same-day US construction estimates, built and run by one team.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "IBtech Nova" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@IbTechnova51426",
+    title: "IBtech Nova | AI Calling Bots, Custom CRMs & US Construction Estimates",
+    description:
+      "AI calling bots, custom CRMs and same-day US construction estimates, built and run by one team.",
+    images: ["/og-image.png"],
+  },
 };
 
 export default function RootLayout({ children }) {

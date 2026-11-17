@@ -64,6 +64,7 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <a
+              aria-label="IBtech Nova on Instagram"
               href="https://www.instagram.com/ibtechnova/"
               target="_blank"
               rel="noopener noreferrer"
@@ -72,7 +73,8 @@ export default function Footer() {
               <InstagramIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://www.linkedin.com/in/ib-technova-04b27a401/"
+              aria-label="IBtech Nova on LinkedIn"
+              href="https://www.linkedin.com/company/145315078/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:text-brand-cyan hover:bg-white/10 transition-all"
@@ -80,6 +82,7 @@ export default function Footer() {
               <LinkedinIcon className="w-4 h-4" />
             </a>
             <a
+              aria-label="IBtech Nova on X"
               href="https://x.com/IbTechnova51426"
               target="_blank"
               rel="noopener noreferrer"
@@ -98,6 +101,7 @@ export default function Footer() {
             <li><Link href="/story" className="text-slate-400 hover:text-white text-sm transition-colors">Our Story</Link></li>
             <li><Link href="/services" className="text-slate-400 hover:text-white text-sm transition-colors">Services</Link></li>
             <li><Link href="/contact" className="text-slate-400 hover:text-white text-sm transition-colors">Contact</Link></li>
+            <li><a href="https://www.linkedin.com/in/ibtech-nova-04b27a401/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white text-sm transition-colors">LinkedIn</a></li>
           </ul>
         </div>
 
@@ -146,8 +150,8 @@ export default function Footer() {
           &copy; {currentYear} IB Technova. All rights reserved.
         </p>
         <div className="flex items-center gap-6">
-          <Link href="#" className="text-slate-500 hover:text-slate-300 text-[10px] uppercase font-bold tracking-widest transition-colors">Privacy Policy</Link>
-          <Link href="#" className="text-slate-500 hover:text-slate-300 text-[10px] uppercase font-bold tracking-widest transition-colors">Terms of Service</Link>
+          <Link href="/privacy-policy" className="text-slate-500 hover:text-slate-300 text-[10px] uppercase font-bold tracking-widest transition-colors">Privacy Policy</Link>
+          <Link href="/terms" className="text-slate-500 hover:text-slate-300 text-[10px] uppercase font-bold tracking-widest transition-colors">Terms of Service</Link>
         </div>
       </div>
     </footer>
