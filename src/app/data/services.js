@@ -73,9 +73,9 @@ export const services = [
     pricing: {
       note: "Starting prices. Final quote after we review your plans.",
       tiers: [
-        { name: "Basic", price: "$60", text: "Single trade or a small residential job." },
-        { name: "Standard", price: "$150", text: "Full residential or a small commercial project.", featured: true },
-        { name: "Premium", price: "$350", text: "Multi-trade commercial project." },
+        { name: "Basic", price: "$25", text: "Single trade or a small residential job." },
+        { name: "Standard", price: "$75", text: "Full residential or a small commercial project.", featured: true },
+        { name: "Premium", price: "$200", text: "Multi-trade commercial project." },
       ],
     },
     faqs: [
