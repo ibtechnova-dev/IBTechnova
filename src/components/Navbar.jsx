@@ -83,14 +83,14 @@ export default function Navbar() {
             </a>
 
             <a 
-              href="mailto:ibtechnova@gmail.com" 
+              href="mailto:info@ibtechnova.com" 
               className="flex items-center gap-2 group/contact transition-all duration-300"
             >
               <div className="w-8 h-8 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink group-hover/contact:bg-brand-pink group-hover/contact:text-white transition-all duration-300">
                 <Mail className="w-3.5 h-3.5" />
               </div>
               <span className="text-[11px] font-bold tracking-wider text-slate-400 group-hover/contact:text-brand-pink transition-colors">
-                ibtechnova@gmail.com
+                info@ibtechnova.com
               </span>
             </a>
           </div>
@@ -148,13 +148,13 @@ export default function Navbar() {
                         <span className="text-sm font-medium text-slate-300">+92 329 5985714</span>
                       </div>
                     </a>
-                    <a href="mailto:ibtechnova@gmail.com" className="flex items-center gap-4 group">
+                    <a href="mailto:info@ibtechnova.com" className="flex items-center gap-4 group">
                       <div className="w-10 h-10 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink">
                         <Mail className="w-4 h-4" />
                       </div>
                       <div className="flex flex-col">
                         <span className="text-[10px] font-bold text-slate-500 uppercase">Email</span>
-                        <span className="text-sm font-medium text-slate-300">ibtechnova@gmail.com</span>
+                        <span className="text-sm font-medium text-slate-300">info@ibtechnova.com</span>
                       </div>
                     </a>
                   </div>

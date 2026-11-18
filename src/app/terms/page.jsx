@@ -70,7 +70,7 @@ const sections = [
     heading: "10. Governing law and contact",
     body: [
       "These terms are governed by the laws of Pakistan unless a signed agreement says otherwise.",
-      "Questions? Email ibtechnova@gmail.com or WhatsApp +92 329 5985714.",
+      "Questions? Email info@ibtechnova.com or WhatsApp +92 329 5985714.",
     ],
   },
 ];

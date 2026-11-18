@@ -47,7 +47,7 @@ const organizationLd = {
   name: "IBtech Nova",
   url: SITE_URL,
   logo: `${SITE_URL}/logo.png`,
-  email: "ibtechnova@gmail.com",
+  email: "info@ibtechnova.com",
   telephone: "+92 329 5985714",
   address: { "@type": "PostalAddress", addressLocality: "Islamabad", addressCountry: "PK" },
   sameAs: [

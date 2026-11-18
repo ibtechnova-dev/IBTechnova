@@ -258,7 +258,7 @@ export default function ContactForm({ variant = "contact", defaultService = "" }
                       <p className="text-xs text-slate-500">
                         No link? Send the PDFs on{" "}
                         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-brand-cyan hover:underline">WhatsApp</a>{" "}
-                        or to <a href="mailto:ibtechnova@gmail.com" className="text-brand-cyan hover:underline">ibtechnova@gmail.com</a>.
+                        or to <a href="mailto:info@ibtechnova.com" className="text-brand-cyan hover:underline">info@ibtechnova.com</a>.
                       </p>
                     </Field>
                   </>
