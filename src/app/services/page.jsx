@@ -231,11 +231,11 @@ export default function ServicesPage() {
                 <span className="text-slate-300 font-medium text-sm group-hover:text-white transition-colors">IB Tech NOVA</span>
               </a>
 
-              <a href="mailto:ibtechnova@gmail.com" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
+              <a href="mailto:info@ibtechnova.com" className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all group">
                 <div className="w-10 h-10 rounded-lg bg-brand-pink/10 flex items-center justify-center text-brand-pink">
                   <Mail className="w-5 h-5" />
                 </div>
-                <span className="text-slate-300 font-medium text-sm group-hover:text-white transition-colors">ibtechnova@gmail.com</span>
+                <span className="text-slate-300 font-medium text-sm group-hover:text-white transition-colors">info@ibtechnova.com</span>
               </a>
             </div>
 

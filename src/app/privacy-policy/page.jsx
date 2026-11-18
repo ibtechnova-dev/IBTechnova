@@ -51,13 +51,13 @@ const sections = [
   {
     heading: "7. Your rights",
     body: [
-      "You can ask us to access, correct or delete the personal information we hold about you by emailing ibtechnova@gmail.com.",
+      "You can ask us to access, correct or delete the personal information we hold about you by emailing info@ibtechnova.com.",
     ],
   },
   {
     heading: "8. Contact",
     body: [
-      "IBtech Nova, Islamabad, Pakistan. Email: ibtechnova@gmail.com. WhatsApp: +92 329 5985714.",
+      "IBtech Nova, Islamabad, Pakistan. Email: info@ibtechnova.com. WhatsApp: +92 329 5985714.",
       "We may update this policy from time to time. The latest version will always be on this page.",
     ],
   },

@@ -132,7 +132,7 @@ export default function Footer() {
               <Mail className="w-4 h-4 text-brand-pink mt-0.5" />
               <div className="flex flex-col">
                 <span className="text-[10px] text-slate-500 uppercase font-bold tracking-tighter mb-0.5">Email</span>
-                <a href="mailto:ibtechnova@gmail.com" className="text-slate-400 hover:text-white text-sm">ibtechnova@gmail.com</a>
+                <a href="mailto:info@ibtechnova.com" className="text-slate-400 hover:text-white text-sm">info@ibtechnova.com</a>
               </div>
             </li>
             <li className="flex items-start gap-3 pt-2">

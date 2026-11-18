@@ -70,11 +70,11 @@ export default function ContactPage() {
           </a>
 
           {/* Email Button */}
-          <a href="mailto:ibtechnova@gmail.com" className="w-full sm:w-auto group relative inline-flex items-center justify-center px-4 sm:px-8 py-3 sm:py-4 font-bold text-white bg-slate-800 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(225,29,116,0.4)]">
+          <a href="mailto:info@ibtechnova.com" className="w-full sm:w-auto group relative inline-flex items-center justify-center px-4 sm:px-8 py-3 sm:py-4 font-bold text-white bg-slate-800 rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(225,29,116,0.4)]">
             <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-brand-pink to-brand-cyan opacity-20 group-hover:opacity-80 transition-opacity duration-300"></div>
             <div className="relative flex items-center gap-2 sm:gap-3">
               <Mail className="w-5 h-5 sm:w-6 sm:h-6 group-hover:animate-pulse" />
-              <span className="text-[15px] sm:text-xl md:text-2xl tracking-wide sm:tracking-wider whitespace-nowrap">ibtechnova@gmail.com</span>
+              <span className="text-[15px] sm:text-xl md:text-2xl tracking-wide sm:tracking-wider whitespace-nowrap">info@ibtechnova.com</span>
             </div>
             <div className="absolute inset-0 border-2 border-brand-pink/50 rounded-full"></div>
           </a>
