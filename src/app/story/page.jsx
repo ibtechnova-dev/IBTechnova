@@ -1,5 +1,6 @@
 "use client";
 
+import { story_visual } from "@/app/assests";
 import { motion } from "framer-motion";
 import { Target, Eye, ShieldCheck, Heart } from "lucide-react";
 import Image from "next/image";
@@ -77,7 +78,7 @@ export default function StoryPage() {
           className="w-full max-w-4xl mx-auto relative rounded-3xl overflow-hidden glass-panel border-brand-cyan/20 shadow-[0_0_60px_rgba(14,165,233,0.15)] aspect-[16/9] mb-20 group"
         >
           <Image
-            src="/assets/story_visual.png"
+            src={story_visual.src}
             alt="Visionary digital workspace"
             fill
             className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"

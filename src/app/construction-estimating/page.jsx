@@ -1,6 +1,7 @@
-import ServicePage from "@/components/ServicePage";
-import JsonLd from "@/components/JsonLd";
-import { serviceBySlug } from "@/data/services";
+import { og_image, estimating_thumb } from "@/app/assests";
+import ServicePage from "@/app/components/ServicePage";
+import JsonLd from "@/app/components/JsonLd";
+import { serviceBySlug } from "@/app/data/services";
 
 const s = serviceBySlug["construction-estimating"];
 
@@ -12,9 +13,9 @@ export const metadata = {
     title: `${s.metaTitle} | IBtech Nova`,
     description: s.metaDescription,
     url: "/construction-estimating",
-    images: [s.video ? "/videos/estimating-thumb.jpg" : "/og-image.png"],
+    images: [s.video ? estimating_thumb.src : og_image.src],
   },
-  twitter: { card: "summary_large_image", title: `${s.metaTitle} | IBtech Nova`, description: s.metaDescription, images: ["/og-image.png"] },
+  twitter: { card: "summary_large_image", title: `${s.metaTitle} | IBtech Nova`, description: s.metaDescription, images: [og_image.src] },
 };
 
 const serviceLd = {

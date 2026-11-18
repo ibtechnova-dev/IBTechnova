@@ -1,5 +1,6 @@
 "use client";
 
+import { logo } from "@/app/assests";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -36,7 +37,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 group md:mr-4">
             <div className="relative w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
               <Image
-                src="/logo.png"
+                src={logo.src}
                 alt="IBtech Nova Logo"
                 priority
                 fill
@@ -116,9 +117,9 @@ export default function Navbar() {
             exit="closed"
             variants={menuVariants}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed inset-0 z-[90] flex items-center justify-center px-6 pt-24 pb-12 pointer-events-none"
+            className="fixed inset-0 z-[90] flex items-start justify-center px-4 sm:px-6 pt-24 pb-6 pointer-events-none"
           >
-            <div className="w-full max-w-sm glass-panel p-8 rounded-[2rem] border-white/10 bg-[#0a0f1d]/90 shadow-2xl pointer-events-auto backdrop-blur-xl">
+            <div className="w-full max-w-sm max-h-[calc(100dvh-7.5rem)] overflow-y-auto glass-panel p-6 sm:p-8 rounded-[2rem] border-white/10 bg-[#0a0f1d]/90 shadow-2xl pointer-events-auto backdrop-blur-xl">
               <div className="flex flex-col gap-8">
                 <div className="flex flex-col gap-4">
                   <span className="text-[10px] uppercase font-bold tracking-[0.3em] text-slate-500 pl-1">Menu</span>

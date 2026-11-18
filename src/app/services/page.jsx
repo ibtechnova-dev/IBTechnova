@@ -1,5 +1,6 @@
 "use client";
 
+import { services_visual } from "@/app/assests";
 import { motion } from "framer-motion";
 import {
   Globe,
@@ -15,8 +16,8 @@ import {
   ExternalLink
 } from "lucide-react";
 import Link from "next/link";
-import ServiceIcon from "@/components/ServiceIcon";
-import { services as coreServices } from "@/data/services";
+import ServiceIcon from "@/app/components/ServiceIcon";
+import { services as coreServices } from "@/app/data/services";
 import Image from "next/image";
 
 const LinkedinIcon = (props) => (
@@ -110,7 +111,7 @@ export default function ServicesPage() {
           className="w-full max-w-4xl mx-auto relative rounded-3xl overflow-hidden glass-panel border-brand-cyan/20 shadow-[0_0_60px_rgba(14,165,233,0.15)] aspect-[16/9] mb-20 group"
         >
           <Image
-            src="/assets/services_visual.png"
+            src={services_visual.src}
             alt="Futuristic software and AI visualization"
             fill
             className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"

@@ -1,4 +1,4 @@
-import LegalPage from "@/components/LegalPage";
+import LegalPage from "@/app/components/LegalPage";
 
 export const metadata = {
   title: "Privacy Policy",

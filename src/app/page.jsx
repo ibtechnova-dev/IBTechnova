@@ -1,12 +1,14 @@
 "use client";
 
+import { director } from "@/app/assests";
+
 import { motion } from "framer-motion";
-import { ChevronRight, Lightbulb, ShieldCheck, Users, Zap, PlayCircle, ArrowRight } from "lucide-react";
+import { ChevronRight, Lightbulb, ShieldCheck, Users, Zap, PlayCircle, ArrowRight, HardHat, ClipboardCheck, Building2 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import ContactForm from "../components/ContactForm";
-import ServiceIcon from "../components/ServiceIcon";
-import { services, BOOK_CALL_URL } from "../data/services";
+import ContactForm from "@/app/components/ContactForm";
+import ServiceIcon from "@/app/components/ServiceIcon";
+import { services, BOOK_CALL_URL } from "@/app/data/services";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -22,7 +24,7 @@ const STATS = [
   { value: "PK · UAE · KSA · UK · US", label: "clients served" },
 ];
 
-const TOOLS = ["PlanSwift", "Bluebeam", "Excel", "VICIdial", "Asterisk", "Node.js", "Angular", "React", "MongoDB", "AWS"];
+const TOOLS = ["PlanSwift", "Bluebeam", "Excel", "VICIdial", "Asterisk", "Node.js", "Angular", "React", "Next.js", "MongoDB", "AWS"];
 
 export default function Home() {
   return (
@@ -120,26 +122,49 @@ export default function Home() {
       </section>
 
       {/* Estimating spotlight */}
-      <section className="w-full max-w-6xl mx-auto px-6 py-16 relative z-10">
-        <motion.div {...fadeUp} className="glass-panel rounded-3xl border-brand-pink/20 overflow-hidden grid grid-cols-1 md:grid-cols-[1.2fr_1fr] items-center">
-          <div className="p-8 md:p-12">
+      <section className="w-full max-w-6xl mx-auto px-4 sm:px-6 py-12 sm:py-16 relative z-10">
+        <motion.div {...fadeUp} className="glass-panel rounded-3xl border-brand-pink/20 overflow-hidden grid grid-cols-1 md:grid-cols-[1.2fr_1fr] items-stretch">
+          <div className="p-6 sm:p-8 md:p-12">
             <span className="text-brand-pink text-xs font-bold uppercase tracking-[0.3em]">For US contractors</span>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mt-4 mb-4 leading-tight">Every bid you skip is a job someone else wins.</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-4 mb-4 leading-tight">Every bid you skip is a job someone else wins.</h2>
             <p className="text-slate-400 leading-relaxed mb-6">
               Send us one set of plans. Get a takeoff and an Excel estimate broken down by CSI division, priced with your own rates, quoted the same day.
             </p>
-            <ul className="text-slate-300 text-sm space-y-2 mb-8">
-              <li>• $24.56M municipal aquatic center, NJ: 9 bid packages</li>
-              <li>• 116,011 SF assisted care community, CA</li>
-              <li>• Custom homes in NY &amp; Hawaii, priced down to the rebar</li>
+            <ul className="list-disc pl-5 text-slate-300 text-sm space-y-2 mb-8 marker:text-brand-pink">
+              <li>$24.56M municipal aquatic center, NJ: 9 bid packages</li>
+              <li>116,011 SF assisted care community, CA</li>
+              <li>Custom homes in NY &amp; Hawaii, priced down to the rebar</li>
             </ul>
-            <Link href="/construction-estimating" className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-gradient-to-r from-brand-pink to-brand-cyan hover:scale-105 transition-transform">
+            <Link href="/construction-estimating" className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-6 py-3 rounded-full font-bold text-white bg-gradient-to-r from-brand-pink to-brand-cyan hover:scale-105 transition-transform">
               <PlayCircle className="w-4 h-4" /> Watch &amp; get a quote
             </Link>
           </div>
-          <Link href="/construction-estimating" className="relative block h-full min-h-[280px] md:min-h-[420px] bg-black/30" aria-label="See construction estimating samples">
-            <Image src="/videos/estimating-thumb.jpg" alt="Sample estimate numbers: $52.5M+ estimated, 4,360+ line items, 4 states" fill sizes="(max-width: 768px) 100vw, 45vw" className="object-cover object-top opacity-90" />
-          </Link>
+          <div className="flex flex-col justify-center bg-gradient-to-br from-[#17102d] via-[#120d24] to-[#090d19] p-4 sm:p-6 md:p-10" aria-label="Recent estimating results">
+            <p className="mb-5 text-center text-xs font-bold uppercase tracking-[0.24em] text-brand-pink">Recent estimates <span className="mx-1 text-slate-500">&middot;</span> real numbers</p>
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-1">
+              {[
+                { value: "$52.5M+", label: "in construction estimates delivered", Icon: HardHat, accent: "text-brand-pink" },
+                { value: "4,360+", label: "line items priced, quantity by quantity", Icon: ClipboardCheck, accent: "text-brand-cyan" },
+                { value: "4 states", label: "commercial, municipal & residential", Icon: Building2, accent: "text-violet-300" },
+              ].map(({ value, label, Icon, accent }) => (
+                <div key={value} className={`flex flex-col items-start gap-2 rounded-2xl border border-white/10 bg-white/[0.045] p-3 sm:p-4 md:flex-row md:items-center md:gap-4 md:p-5 ${value === "4 states" ? "col-span-2 md:col-span-1" : ""}`}>
+                  <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl bg-white/[0.06] md:h-12 md:w-12 ${accent}`}>
+                    <Icon className="h-5 w-5 md:h-6 md:w-6" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className={`text-2xl font-extrabold leading-none tracking-tight sm:text-3xl md:text-4xl ${accent}`}>{value}</p>
+                    <p className="mt-1.5 text-xs leading-relaxed text-slate-300 sm:mt-2 sm:text-sm">{label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-2" aria-label="States served">
+              {["NY", "NJ", "CA", "HI"].map((state) => (
+                <span key={state} className="rounded-lg border border-brand-pink/25 bg-brand-pink/10 px-3 py-1.5 text-xs font-bold text-slate-100">{state}</span>
+              ))}
+            </div>
+            <p className="mt-4 text-center text-xs text-slate-400">Sample estimates available on request</p>
+          </div>
         </motion.div>
       </section>
 
@@ -177,9 +202,9 @@ export default function Home() {
       </section>
 
       {/* Tools */}
-      <section className="w-full max-w-6xl mx-auto px-6 py-12 relative z-10" aria-label="Tools we work with">
+      <section className="w-full max-w-6xl mx-auto px-6 py-12 relative z-10" aria-label="Tools and technologies we use">
         <motion.div {...fadeUp} className="text-center">
-          <span className="text-slate-500 text-xs font-bold uppercase tracking-[0.3em]">Tools we work with</span>
+          <span className="text-slate-500 text-xs font-bold uppercase tracking-[0.3em]">Tools &amp; technologies we use</span>
           <div className="flex flex-wrap justify-center gap-3 mt-6">
             {TOOLS.map((t) => (
               <span key={t} className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-slate-300 text-sm font-medium">
@@ -193,9 +218,8 @@ export default function Home() {
       {/* Founder */}
       <section className="w-full max-w-4xl mx-auto px-6 py-16 relative z-10">
         <motion.div {...fadeUp} className="glass-panel rounded-3xl border-white/5 p-8 md:p-10 flex flex-col sm:flex-row items-center gap-8 text-center sm:text-left">
-          {/* TODO(Bilal): replace the initials with your photo: put it at /public/team/bilal.jpg and swap this div for <Image src="/team/bilal.jpg" .../> */}
           <div className="w-28 h-28 flex-shrink-0 rounded-full bg-gradient-to-br from-brand-pink to-brand-cyan p-[3px]">
-            <div className="w-full h-full rounded-full bg-[#0a0f1d] flex items-center justify-center text-3xl font-bold text-white">BA</div>
+            <Image src={director} alt="Bilal Ahmad, founder of IBtech Nova" width={112} height={112} className="w-full h-full rounded-full object-cover" />
           </div>
           <div>
             <span className="text-brand-cyan text-xs font-bold uppercase tracking-[0.3em]">Meet the founder</span>

@@ -1,9 +1,10 @@
 "use client";
 
+import { logo } from "@/app/assests";
 import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail } from "lucide-react";
-import { services } from "@/data/services";
+import { services } from "@/app/data/services";
 
 const InstagramIcon = (props) => (
   <svg {...props} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -37,13 +38,13 @@ export default function Footer() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-pink/5 blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-cyan/5 blur-[120px] pointer-events-none" />
       
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16 relative z-10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-12 mb-16 relative z-10">
         {/* Branding Section */}
         <div className="md:col-span-1">
           <Link href="/" className="flex items-center gap-3 group mb-6">
             <div className="relative w-10 h-10 flex-shrink-0">
               <Image
-                src="/logo.png"
+                src={logo.src}
                 alt="IBtech Nova Logo"
                 fill
                 className="object-contain"

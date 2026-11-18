@@ -1,7 +1,7 @@
 "use client";
 
-import { WHATSAPP_URL } from "@/data/services";
-import { trackWhatsApp } from "@/components/Analytics";
+import { WHATSAPP_URL } from "@/app/data/services";
+import { trackWhatsApp } from "@/app/components/Analytics";
 
 export default function WhatsAppButton() {
   return (

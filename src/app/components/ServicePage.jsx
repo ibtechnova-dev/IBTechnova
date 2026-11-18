@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { ChevronRight, CheckCircle2, ExternalLink, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import ContactForm from "@/components/ContactForm";
-import ServiceIcon from "@/components/ServiceIcon";
-import { serviceBySlug, services, BOOK_CALL_URL } from "@/data/services";
+import ContactForm from "@/app/components/ContactForm";
+import ServiceIcon from "@/app/components/ServiceIcon";
+import { serviceBySlug, services, BOOK_CALL_URL } from "@/app/data/services";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },

@@ -1,0 +1,22 @@
+import og_image from "./og-image.png";
+import logo from "./logo.png";
+import hero from "./hero.png";
+import story_visual from "./story_visual.png";
+import services_visual from "./services_visual.png";
+import contact_visual from "./contact_visual.png";
+import estimating_thumb from "./estimating-thumb.jpg";
+import director from "./director.jpeg";
+import ai_agents from "./ai-agents.webp";
+import estimating from "./estimating.webp";
+import network_security from "./network-security.webp";
+import oneform from "./oneform.webp";
+import qa_portal from "./qa-portal.webp";
+import site_7ebuilders from "./site-7ebuilders.webp";
+import site_dreamhomeupgrade from "./site-dreamhomeupgrade.webp";
+import site_leadsfury from "./site-leadsfury.webp";
+import site_smartbrainsbpo from "./site-smartbrainsbpo.webp";
+import site_smartbrainsbpollc from "./site-smartbrainsbpollc.webp";
+import site_zeefinance from "./site-zeefinance.webp";
+import vicidial from "./vicidial.webp";
+
+export { og_image, logo, hero, story_visual, services_visual, contact_visual, estimating_thumb, director, ai_agents, estimating, network_security, oneform, qa_portal, site_7ebuilders, site_dreamhomeupgrade, site_leadsfury, site_smartbrainsbpo, site_smartbrainsbpollc, site_zeefinance, vicidial };

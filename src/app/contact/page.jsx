@@ -1,8 +1,10 @@
 "use client";
 
+import { contact_visual } from "@/app/assests";
+
 import { motion } from "framer-motion";
 import { PhoneCall, Mail } from "lucide-react";
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/app/components/ContactForm";
 import Image from "next/image";
 
 export default function ContactPage() {
@@ -35,7 +37,7 @@ export default function ContactPage() {
           className="w-full max-w-2xl mx-auto relative rounded-3xl overflow-hidden glass-panel border-brand-cyan/20 shadow-[0_0_60px_rgba(14,165,233,0.15)] aspect-video mb-16 group"
         >
           <Image
-            src="/assets/contact_visual.png"
+            src={contact_visual.src}
             alt="Digital partnership and connection"
             fill
             className="object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"

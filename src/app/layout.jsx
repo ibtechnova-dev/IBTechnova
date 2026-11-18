@@ -1,9 +1,10 @@
+import { og_image, logo } from "@/app/assests";
 import { Outfit } from "next/font/google";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import WhatsAppButton from "../components/WhatsAppButton";
-import Analytics from "../components/Analytics";
-import JsonLd from "../components/JsonLd";
+import Navbar from "@/app/components/Navbar";
+import Footer from "@/app/components/Footer";
+import WhatsAppButton from "@/app/components/WhatsAppButton";
+import Analytics from "@/app/components/Analytics";
+import JsonLd from "@/app/components/JsonLd";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -29,7 +30,7 @@ export const metadata = {
     title: "IBtech Nova | AI Calling Bots, Custom CRMs & US Construction Estimates",
     description:
       "AI calling bots, custom CRMs and same-day US construction estimates, built and run by one team.",
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "IBtech Nova" }],
+    images: [{ url: og_image.src, width: 1200, height: 630, alt: "IBtech Nova" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -37,7 +38,7 @@ export const metadata = {
     title: "IBtech Nova | AI Calling Bots, Custom CRMs & US Construction Estimates",
     description:
       "AI calling bots, custom CRMs and same-day US construction estimates, built and run by one team.",
-    images: ["/og-image.png"],
+    images: [og_image.src],
   },
 };
 
@@ -46,7 +47,7 @@ const organizationLd = {
   "@type": "Organization",
   name: "IBtech Nova",
   url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  logo: `${SITE_URL}${logo.src}`,
   email: "ibtechnova@gmail.com",
   telephone: "+92 329 5985714",
   address: { "@type": "PostalAddress", addressLocality: "Islamabad", addressCountry: "PK" },

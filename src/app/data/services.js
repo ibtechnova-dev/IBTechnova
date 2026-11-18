@@ -1,3 +1,4 @@
+import { estimating_thumb, ai_agents, vicidial, qa_portal, oneform, site_7ebuilders, site_leadsfury, site_dreamhomeupgrade, site_zeefinance, site_smartbrainsbpo, site_smartbrainsbpollc, network_security } from "@/app/assests";
 // Single source of truth for every service page, the home services grid,
 // the contact form "Service" dropdown, sitemap entries and JSON-LD.
 // Only real facts go here. Anything still missing is marked TODO.
@@ -28,7 +29,7 @@ export const services = [
     primaryCta: { label: "Get a Same-Day Quote", href: "#quote" },
     video: {
       src: "/videos/estimating-showcase.mp4",
-      poster: "/videos/estimating-thumb.jpg",
+      poster: estimating_thumb.src,
       label: "Recent estimates from our desk (64s)",
     },
     stats: [
@@ -119,8 +120,8 @@ export const services = [
       "We build AI voice and fronter bots that qualify leads and hand off live calls, plus the dialer and VICIdial infrastructure underneath them, so your agents only talk to people ready to buy.",
     primaryCta: { label: "Book a 15-min Call", href: "BOOK" },
     images: [
-      { src: "/work/ai-agents.webp", alt: "AI agents that answer, qualify and hand off" },
-      { src: "/work/vicidial.webp", alt: "VICIdial setup for call centers" },
+      { src: ai_agents, alt: "AI agents that answer, qualify and hand off" },
+      { src: vicidial, alt: "VICIdial setup for call centers" },
     ],
     // TODO(Bilal): add demo video links (dialer platform, fronter bot, Vici Priority).
     highlightsTitle: "What we build",
@@ -156,8 +157,8 @@ export const services = [
       "We build the internal systems that run operations: HR and payroll, quality assurance, lead entry and CRM, designed around how your team actually works.",
     primaryCta: { label: "Book a 15-min Call", href: "BOOK" },
     images: [
-      { src: "/work/qa-portal.webp", alt: "QA portal live dashboard" },
-      { src: "/work/oneform.webp", alt: "OneForm single-form lead entry" },
+      { src: qa_portal, alt: "QA portal live dashboard" },
+      { src: oneform, alt: "OneForm single-form lead entry" },
     ],
     // TODO(Bilal): add demo video links (HRMS, QA Portal, OneForm).
     highlightsTitle: "Systems we have built",
@@ -192,7 +193,7 @@ export const services = [
     intro:
       "We set up AI agents and automations that answer customers, qualify leads, book meetings and move data between your tools, with a human handoff when it matters.",
     primaryCta: { label: "Book a 15-min Call", href: "BOOK" },
-    images: [{ src: "/work/ai-agents.webp", alt: "AI agents that answer, qualify and hand off" }],
+    images: [{ src: ai_agents, alt: "AI agents that answer, qualify and hand off" }],
     highlightsTitle: "What we automate",
     highlights: [
       { title: "Chat & WhatsApp agents", text: "Instant first replies on every channel, trained on your services and pricing." },
@@ -224,12 +225,12 @@ export const services = [
     primaryCta: { label: "Get a Quote", href: "BOOK" },
     portfolioTitle: "Live websites we've built",
     portfolio: [
-      { name: "7E Builders & Developers", url: "https://www.7ebuildersanddevelopers.com/", img: "/work/site-7ebuilders.webp" },
-      { name: "LeadsFury", url: "https://www.leadsfury.com/", img: "/work/site-leadsfury.webp" },
-      { name: "Dream Home Upgrade", url: "https://dreamhomeupgrade.us/", img: "/work/site-dreamhomeupgrade.webp" },
-      { name: "Zee Finance", url: "https://zeefinance.net/", img: "/work/site-zeefinance.webp" },
-      { name: "SmartBrains BPO", url: "https://smartbrainsbpo.com/", img: "/work/site-smartbrainsbpo.webp" },
-      { name: "SmartBrains BPO LLC", url: "https://www.smartbrainsbpollc.com/", img: "/work/site-smartbrainsbpollc.webp" },
+      { name: "7E Builders & Developers", url: "https://www.7ebuildersanddevelopers.com/", img: site_7ebuilders },
+      { name: "LeadsFury", url: "https://www.leadsfury.com/", img: site_leadsfury },
+      { name: "Dream Home Upgrade", url: "https://dreamhomeupgrade.us/", img: site_dreamhomeupgrade },
+      { name: "Zee Finance", url: "https://zeefinance.net/", img: site_zeefinance },
+      { name: "SmartBrains BPO", url: "https://smartbrainsbpo.com/", img: site_smartbrainsbpo },
+      { name: "SmartBrains BPO LLC", url: "https://www.smartbrainsbpollc.com/", img: site_smartbrainsbpollc },
     ],
     highlightsTitle: "What's included",
     highlights: [
@@ -260,7 +261,7 @@ export const services = [
     intro:
       "We design and secure your office network, move CCTV recordings to the cloud, and set up the servers and backups your systems run on.",
     primaryCta: { label: "Book a 15-min Call", href: "BOOK" },
-    images: [{ src: "/work/network-security.webp", alt: "Secure your business network" }],
+    images: [{ src: network_security, alt: "Secure your business network" }],
     highlightsTitle: "What we do",
     highlights: [
       { title: "Network design & security", text: "Firewalls, VPNs, segmentation and hardening for offices and call centers." },

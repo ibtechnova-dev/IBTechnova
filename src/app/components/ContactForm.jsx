@@ -4,8 +4,8 @@ import { useState } from "react";
 import * as Yup from "yup";
 import { motion, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle2, AlertCircle, Loader2 } from "lucide-react";
-import { serviceOptions, WHATSAPP_URL } from "@/data/services";
-import { trackLead } from "@/components/Analytics";
+import { serviceOptions, WHATSAPP_URL } from "@/app/data/services";
+import { trackLead } from "@/app/components/Analytics";
 
 // Google Apps Script endpoint (writes to the leads sheet). It expects
 // multipart/form-data with name, email, phone, remarks and replies "Success".
