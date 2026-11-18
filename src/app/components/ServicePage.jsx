@@ -138,7 +138,7 @@ export default function ServicePage({ slug }) {
         <section className="w-full max-w-6xl mx-auto px-6 mb-20 relative z-10">
           <div className={`grid grid-cols-1 ${s.images.length > 1 ? "md:grid-cols-2" : "max-w-3xl mx-auto"} gap-6`}>
             {s.images.map((img) => (
-              <motion.div key={img.src} {...fadeUp} className="relative aspect-[16/10] rounded-2xl overflow-hidden glass-panel border-white/10">
+              <motion.div key={img.alt} {...fadeUp} className="relative aspect-[16/10] rounded-2xl overflow-hidden glass-panel border-white/10">
                 <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover" />
               </motion.div>
             ))}
